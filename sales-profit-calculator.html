@@ -1,0 +1,450 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Profit Per 100 Sales Calculator - Free
+    </title>
+
+    <meta
+        name="description"
+        content="Calculate your estimated revenue, costs, and profit from 100 e-commerce sales with this free calculator.">
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+
+<body>
+
+    <main class="container">
+
+
+        <!-- Hero -->
+
+        <header class="hero">
+
+            <div class="badge">
+                FREE TOOL
+            </div>
+
+            <h1>
+                Profit Per 100 Sales Calculator
+            </h1>
+
+            <p class="subtitle">
+                Estimate how much revenue and profit you could generate
+                from 100 product sales.
+            </p>
+
+        </header>
+
+
+
+        <!-- Calculator -->
+
+        <section class="calculator">
+
+            <div class="section-title">
+
+                <h2>
+                    Enter Your Numbers
+                </h2>
+
+                <p>
+                    Enter the economics of one product sale.
+                </p>
+
+            </div>
+
+
+            <label>
+
+                Currency
+
+                <select id="currency">
+
+                    <option value="$">
+                        USD ($)
+                    </option>
+
+                    <option value="Rs.">
+                        LKR (Rs.)
+                    </option>
+
+                    <option value="₹">
+                        INR (₹)
+                    </option>
+
+                    <option value="€">
+                        EUR (€)
+                    </option>
+
+                    <option value="£">
+                        GBP (£)
+                    </option>
+
+                    <option value="A$">
+                        AUD (A$)
+                    </option>
+
+                    <option value="C$">
+                        CAD (C$)
+                    </option>
+
+                    <option value="S$">
+                        SGD (S$)
+                    </option>
+
+                </select>
+
+            </label>
+
+
+
+            <label>
+
+                Selling Price Per Product
+
+                <input
+                    type="number"
+                    id="sellingPrice"
+                    placeholder="59"
+                    step="0.01"
+                    min="0">
+
+            </label>
+
+
+
+            <label>
+
+                Product Cost Per Product
+
+                <input
+                    type="number"
+                    id="productCost"
+                    placeholder="20"
+                    step="0.01"
+                    min="0">
+
+            </label>
+
+
+
+            <label>
+
+                Shipping Cost Per Product
+
+                <input
+                    type="number"
+                    id="shippingCost"
+                    placeholder="5"
+                    step="0.01"
+                    min="0">
+
+            </label>
+
+
+
+            <label>
+
+                Platform Fee (%)
+
+                <input
+                    type="number"
+                    id="platformFee"
+                    placeholder="5"
+                    value="5"
+                    step="0.01"
+                    min="0"
+                    max="100">
+
+            </label>
+
+
+
+            <label>
+
+                Advertising Cost Per Sale
+
+                <input
+                    type="number"
+                    id="advertisingCost"
+                    placeholder="10"
+                    step="0.01"
+                    min="0">
+
+            </label>
+
+
+
+            <button
+                class="calculate-button"
+                onclick="calculate100Sales()">
+
+                Calculate 100 Sales
+
+            </button>
+
+        </section>
+
+
+
+        <!-- Results -->
+
+        <section class="results">
+
+
+            <div class="result-card">
+
+                <span>
+                    Revenue
+                </span>
+
+                <strong id="revenue">
+                    $0.00
+                </strong>
+
+            </div>
+
+
+
+            <div class="result-card">
+
+                <span>
+                    Total Costs
+                </span>
+
+                <strong id="totalCosts">
+                    $0.00
+                </strong>
+
+            </div>
+
+
+
+            <div class="result-card">
+
+                <span>
+                    Total Profit
+                </span>
+
+                <strong id="totalProfit">
+                    $0.00
+                </strong>
+
+            </div>
+
+
+
+            <div class="result-card">
+
+                <span>
+                    Profit Per Sale
+                </span>
+
+                <strong id="profitPerSale">
+                    $0.00
+                </strong>
+
+            </div>
+
+
+
+            <div class="result-card">
+
+                <span>
+                    Profit Margin
+                </span>
+
+                <strong id="margin">
+                    0%
+                </strong>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Information -->
+
+        <section class="info">
+
+            <h2>
+                Profit Per 100 Sales Calculator
+            </h2>
+
+
+            <p>
+                This calculator estimates the revenue and profit
+                generated from 100 product sales.
+            </p>
+
+
+            <p>
+                Enter the selling price, product cost, shipping,
+                platform fee, and advertising cost for one sale.
+                The calculator then multiplies the results by 100.
+            </p>
+
+
+            <h2>
+                Example
+            </h2>
+
+
+            <p>
+                If you sell a product for $50 and make $15 profit
+                from each sale, 100 sales would generate approximately
+                $1,500 in profit before any additional expenses not
+                included in the calculator.
+            </p>
+
+
+            <h2>
+                Why calculate profit per 100 sales?
+            </h2>
+
+
+            <p>
+                Looking at profit across 100 sales can make it easier
+                to understand how your product economics scale with
+                increased sales volume.
+            </p>
+
+        </section>
+
+
+
+        <!-- Footer -->
+
+        <footer>
+
+            <p>
+                Free E-Commerce Profit Calculator
+            </p>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <script>
+
+        function calculate100Sales() {
+
+            const currency =
+                document.getElementById("currency").value;
+
+
+            const sellingPrice =
+                Number(
+                    document.getElementById("sellingPrice").value
+                ) || 0;
+
+
+            const productCost =
+                Number(
+                    document.getElementById("productCost").value
+                ) || 0;
+
+
+            const shippingCost =
+                Number(
+                    document.getElementById("shippingCost").value
+                ) || 0;
+
+
+            const platformFeePercent =
+                Number(
+                    document.getElementById("platformFee").value
+                ) || 0;
+
+
+            const advertisingCost =
+                Number(
+                    document.getElementById("advertisingCost").value
+                ) || 0;
+
+
+            const sales = 100;
+
+
+            const platformFee =
+                sellingPrice *
+                (platformFeePercent / 100);
+
+
+            const costPerSale =
+                productCost +
+                shippingCost +
+                platformFee +
+                advertisingCost;
+
+
+            const profitPerSale =
+                sellingPrice -
+                costPerSale;
+
+
+            const revenue =
+                sellingPrice *
+                sales;
+
+
+            const totalCosts =
+                costPerSale *
+                sales;
+
+
+            const totalProfit =
+                profitPerSale *
+                sales;
+
+
+            const margin =
+                sellingPrice > 0
+                    ? (profitPerSale / sellingPrice) * 100
+                    : 0;
+
+
+            document.getElementById("revenue").textContent =
+                currency + revenue.toFixed(2);
+
+
+            document.getElementById("totalCosts").textContent =
+                currency + totalCosts.toFixed(2);
+
+
+            document.getElementById("totalProfit").textContent =
+                currency + totalProfit.toFixed(2);
+
+
+            document.getElementById("profitPerSale").textContent =
+                currency + profitPerSale.toFixed(2);
+
+
+            document.getElementById("margin").textContent =
+                margin.toFixed(2) + "%";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+```

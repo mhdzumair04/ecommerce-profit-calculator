@@ -393,3 +393,57 @@ footer {
     }
 
 }
+
+/* Navigation */
+
+.navigation {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 35px;
+}
+
+
+.navigation a {
+    padding: 10px 16px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    color: #555;
+
+    background: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.navigation a:hover {
+    color: #111;
+}
+
+
+.navigation a.active {
+    background: #111;
+
+    color: white;
+}
+
+
+@media (max-width: 450px) {
+
+    .navigation {
+        flex-direction: column;
+    }
+
+    .navigation a {
+        text-align: center;
+    }
+
+}
