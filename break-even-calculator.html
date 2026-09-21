@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Free e-commerce break-even calculator. Calculate the minimum selling price needed to cover your product, shipping, advertising, and platform fees."
+    >
+
+    <meta
+        name="keywords"
+        content="break even calculator, ecommerce break even calculator, selling price calculator, online business calculator"
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <title>
+        E-Commerce Break-Even Calculator - Free Online Tool
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- Navigation -->
+
+    <nav class="navigation">
+
+        <a href="index.html">
+
+            Profit Calculator
+
+        </a>
+
+
+        <a href="sales-profit-calculator.html">
+
+            100 Sales Calculator
+
+        </a>
+
+
+        <a
+            href="break-even-calculator.html"
+            class="active">
+
+            Break-Even Calculator
+
+        </a>
+
+    </nav>
+
+
+    <!-- Hero -->
+
+    <section class="hero">
+
+        <div class="badge">
+
+            FREE TOOL
+
+        </div>
+
+
+        <h1>
+
+            E-Commerce Break-Even Calculator
+
+        </h1>
+
+
+        <p class="subtitle">
+
+            Find the minimum selling price you need to cover your costs and break even.
+
+        </p>
+
+    </section>
+
+
+    <!-- Calculator -->
+
+    <section class="calculator">
+
+
+        <h2 class="section-title">
+
+            Enter Your Costs
+
+        </h2>
+
+
+        <!-- Currency -->
+
+        <label for="currency">
+
+            Currency
+
+        </label>
+
+
+        <select id="currency">
+
+            <option value="$">
+
+                USD ($)
+
+            </option>
+
+
+            <option value="Rs.">
+
+                LKR (Rs.)
+
+            </option>
+
+
+            <option value="₹">
+
+                INR (₹)
+
+            </option>
+
+
+            <option value="€">
+
+                EUR (€)
+
+            </option>
+
+
+            <option value="£">
+
+                GBP (£)
+
+            </option>
+
+
+            <option value="A$">
+
+                AUD (A$)
+
+            </option>
+
+
+            <option value="C$">
+
+                CAD (C$)
+
+            </option>
+
+
+            <option value="S$">
+
+                SGD (S$)
+
+            </option>
+
+        </select>
+
+
+        <!-- Product Cost -->
+
+        <label for="productCost">
+
+            Product Cost Per Sale
+
+        </label>
+
+
+        <input
+            type="number"
+            id="productCost"
+            placeholder="Example: 10"
+            min="0"
+            step="0.01"
+        >
+
+
+        <!-- Shipping -->
+
+        <label for="shippingCost">
+
+            Shipping Cost Per Sale
+
+        </label>
+
+
+        <input
+            type="number"
+            id="shippingCost"
+            placeholder="Example: 3"
+            min="0"
+            step="0.01"
+        >
+
+
+        <!-- Advertising -->
+
+        <label for="advertisingCost">
+
+            Advertising Cost Per Sale
+
+        </label>
+
+
+        <input
+            type="number"
+            id="advertisingCost"
+            placeholder="Example: 2"
+            min="0"
+            step="0.01"
+        >
+
+
+        <!-- Platform Fee -->
+
+        <label for="platformFee">
+
+            Platform Fee (%)
+
+        </label>
+
+
+        <input
+            type="number"
+            id="platformFee"
+            placeholder="Example: 15"
+            value="5"
+            min="0"
+            max="99"
+            step="0.1"
+        >
+
+
+        <!-- Buttons -->
+
+        <div class="button-row">
+
+
+            <button
+                class="calculate-button"
+                onclick="calculateBreakEven()">
+
+                Calculate Break-Even Price
+
+            </button>
+
+
+            <button
+                class="reset-button"
+                onclick="resetCalculator()">
+
+                Reset
+
+            </button>
+
+
+        </div>
+
+
+        <!-- Status -->
+
+        <div
+            id="breakEvenStatus"
+            class="profit-status neutral">
+
+            Enter your costs and calculate your break-even price.
+
+        </div>
+
+
+        <!-- Results -->
+
+        <div class="results">
+
+
+            <div class="result-card">
+
+                <span>
+
+                    Fixed Costs Per Sale
+
+                </span>
+
+
+                <strong id="fixedCosts">
+
+                    $0.00
+
+                </strong>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <span>
+
+                    Platform Fee
+
+                </span>
+
+
+                <strong id="feeAmount">
+
+                    $0.00
+
+                </strong>
+
+            </div>
+
+
+            <div class="result-card">
+
+                <span>
+
+                    Break-Even Price
+
+                </span>
+
+
+                <strong id="breakEvenPrice">
+
+                    $0.00
+
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- Information -->
+
+    <section class="info">
+
+
+        <h2>
+
+            What Is a Break-Even Price?
+
+        </h2>
+
+
+        <p>
+
+            Your break-even price is the minimum amount you need to charge for a product so that your revenue covers your product cost, shipping, advertising expenses, and percentage-based platform fees.
+
+        </p>
+
+
+        <h2>
+
+            How It Works
+
+        </h2>
+
+
+        <p>
+
+            Enter your costs and platform fee percentage above. The calculator determines the selling price where your total revenue equals your total costs.
+
+        </p>
+
+
+        <h2>
+
+            Example
+
+        </h2>
+
+
+        <p>
+
+            If your product costs $10, shipping costs $3, advertising costs $2, and your platform charges a 10% fee, the calculator will determine the selling price required to cover all of those costs.
+
+        </p>
+
+
+        <h2>
+
+            More Free E-Commerce Calculators
+
+        </h2>
+
+
+        <p>
+
+            Use our
+
+            <a href="index.html">
+
+                E-Commerce Profit Calculator
+
+            </a>
+
+            to calculate profit, margin, break-even price, and ROAS.
+
+        </p>
+
+
+        <p>
+
+            You can also use our
+
+            <a href="sales-profit-calculator.html">
+
+                Profit Per 100 Sales Calculator
+
+            </a>
+
+            to estimate your total profit from 100 sales.
+
+        </p>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+
+            Free E-Commerce Calculators
+
+        </p>
+
+
+        <p>
+
+            © 2026
+
+        </p>
+
+    </footer>
+
+
+</div>
+
+
+<script>
+
+
+function calculateBreakEven() {
+
+
+    const currency =
+        document.getElementById("currency").value;
+
+
+    const productCost =
+        Number(
+            document.getElementById("productCost").value
+        ) || 0;
+
+
+    const shippingCost =
+        Number(
+            document.getElementById("shippingCost").value
+        ) || 0;
+
+
+    const advertisingCost =
+        Number(
+            document.getElementById("advertisingCost").value
+        ) || 0;
+
+
+    const platformFeePercent =
+        Number(
+            document.getElementById("platformFee").value
+        ) || 0;
+
+
+    const fixedCosts =
+        productCost +
+        shippingCost +
+        advertisingCost;
+
+
+    const feeRate =
+        platformFeePercent / 100;
+
+
+    let breakEvenPrice = 0;
+
+
+    if (feeRate < 1) {
+
+        breakEvenPrice =
+            fixedCosts / (1 - feeRate);
+
+    }
+
+
+    const feeAmount =
+        breakEvenPrice * feeRate;
+
+
+    document.getElementById("fixedCosts").textContent =
+        currency + fixedCosts.toFixed(2);
+
+
+    document.getElementById("feeAmount").textContent =
+        currency + feeAmount.toFixed(2);
+
+
+    document.getElementById("breakEvenPrice").textContent =
+        currency + breakEvenPrice.toFixed(2);
+
+
+    const status =
+        document.getElementById("breakEvenStatus");
+
+
+    if (fixedCosts === 0) {
+
+        status.textContent =
+            "Enter your costs and calculate your break-even price.";
+
+        status.className =
+            "profit-status neutral";
+
+    }
+
+    else if (feeRate >= 1) {
+
+        status.textContent =
+            "Platform fee must be less than 100%.";
+
+        status.className =
+            "profit-status negative";
+
+    }
+
+    else {
+
+        status.textContent =
+            "✓ Your break-even selling price has been calculated.";
+
+        status.className =
+            "profit-status positive";
+
+    }
+
+}
+
+
+function resetCalculator() {
+
+
+    document.getElementById("currency").value =
+        "$";
+
+
+    document.getElementById("productCost").value =
+        "";
+
+
+    document.getElementById("shippingCost").value =
+        "";
+
+
+    document.getElementById("advertisingCost").value =
+        "";
+
+
+    document.getElementById("platformFee").value =
+        "5";
+
+
+    document.getElementById("fixedCosts").textContent =
+        "$0.00";
+
+
+    document.getElementById("feeAmount").textContent =
+        "$0.00";
+
+
+    document.getElementById("breakEvenPrice").textContent =
+        "$0.00";
+
+
+    const status =
+        document.getElementById("breakEvenStatus");
+
+
+    status.textContent =
+        "Enter your costs and calculate your break-even price.";
+
+
+    status.className =
+        "profit-status neutral";
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

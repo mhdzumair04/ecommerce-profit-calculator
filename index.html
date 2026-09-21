@@ -5,401 +5,509 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Free e-commerce profit calculator. Calculate product profit, profit margin, break-even price and ROAS."
+    >
+
+    <meta
+        name="keywords"
+        content="ecommerce profit calculator, profit calculator, ecommerce calculator, online business calculator"
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <meta
+        name="author"
+        content="E-Commerce Calculators"
+    >
 
     <title>
         E-Commerce Profit Calculator - Free Online Tool
     </title>
 
-    <meta
-        name="description"
-        content="Free e-commerce profit calculator. Calculate product profit, profit margin, break-even price, platform fees, and ROAS.">
+    <link
+        rel="canonical"
+        href="https://YOUR-USERNAME.github.io/ecommerce-profit-calculator/"
+    >
 
     <link
         rel="stylesheet"
-        href="style.css">
+        href="style.css"
+    >
 
 </head>
 
 
 <body>
 
-    <main class="container">
 
+<div class="container">
 
-        <!-- Navigation -->
 
-        <nav class="navigation">
+    <!-- Navigation -->
 
-            <a href="index.html" class="active">
-                Profit Calculator
-            </a>
+    <nav class="navigation">
 
-            <a href="sales-profit-calculator.html">
-                100 Sales Calculator
-            </a>
+        <a
+            href="index.html"
+            class="active">
 
-        </nav>
+            Profit Calculator
 
+        </a>
 
 
-        <!-- Hero -->
+        <a href="sales-profit-calculator.html">
 
-        <header class="hero">
+            100 Sales Calculator
 
-            <div class="badge">
-                FREE TOOL
-            </div>
+        </a>
 
-            <h1>
-                E-Commerce Profit Calculator
-            </h1>
 
-            <p class="subtitle">
-                Calculate your product profit, profit margin,
-                break-even price, and advertising ROAS in seconds.
-            </p>
+        <a href="break-even-calculator.html">
 
-        </header>
+            Break-Even Calculator
 
+        </a>
 
+    </nav>
 
-        <!-- Calculator -->
 
-        <section class="calculator">
+    <!-- Hero -->
 
-            <div class="section-title">
+    <section class="hero">
 
-                <h2>
-                    Product Details
-                </h2>
+        <div class="badge">
 
-                <p>
-                    Enter your product numbers below.
-                </p>
+            FREE TOOL
 
-            </div>
+        </div>
 
 
-            <label>
+        <h1>
 
-                Currency
+            E-Commerce Profit Calculator
 
-                <select
-                    id="currency"
-                    onchange="calculateProfit()">
+        </h1>
 
-                    <option value="$">
-                        USD ($)
-                    </option>
 
-                    <option value="Rs.">
-                        LKR (Rs.)
-                    </option>
+        <p class="subtitle">
 
-                    <option value="₹">
-                        INR (₹)
-                    </option>
+            Calculate your product profit, profit margin, break-even price and ROAS.
 
-                    <option value="€">
-                        EUR (€)
-                    </option>
+        </p>
 
-                    <option value="£">
-                        GBP (£)
-                    </option>
+    </section>
 
-                    <option value="A$">
-                        AUD (A$)
-                    </option>
 
-                    <option value="C$">
-                        CAD (C$)
-                    </option>
+    <!-- Calculator -->
 
-                    <option value="S$">
-                        SGD (S$)
-                    </option>
+    <section class="calculator">
 
-                </select>
 
-            </label>
+        <h2 class="section-title">
 
+            Enter Your Numbers
 
+        </h2>
 
-            <label>
 
-                Platform
+        <!-- Currency -->
 
-                <select
-                    id="platform"
-                    onchange="updatePlatformFee()">
+        <label for="currency">
 
-                    <option value="custom">
-                        Custom
-                    </option>
+            Currency
 
-                    <option value="amazon">
-                        Amazon — 15%
-                    </option>
+        </label>
 
-                    <option value="shopify">
-                        Shopify — 2%
-                    </option>
 
-                    <option value="etsy">
-                        Etsy — 6.5%
-                    </option>
+        <select id="currency">
 
-                    <option value="ebay">
-                        eBay — 13.6%
-                    </option>
+            <option value="$">
+                USD ($)
+            </option>
 
-                </select>
+            <option value="Rs.">
+                LKR (Rs.)
+            </option>
 
-            </label>
+            <option value="₹">
+                INR (₹)
+            </option>
 
+            <option value="€">
+                EUR (€)
+            </option>
 
+            <option value="£">
+                GBP (£)
+            </option>
 
-            <label>
+            <option value="A$">
+                AUD (A$)
+            </option>
 
-                Product Cost
+            <option value="C$">
+                CAD (C$)
+            </option>
 
-                <input
-                    type="number"
-                    id="productCost"
-                    placeholder="20"
-                    step="0.01"
-                    min="0">
+            <option value="S$">
+                SGD (S$)
+            </option>
 
-            </label>
+        </select>
 
 
+        <!-- Platform -->
 
-            <label>
+        <label for="platform">
 
-                Selling Price
+            Platform
 
-                <input
-                    type="number"
-                    id="sellingPrice"
-                    placeholder="59"
-                    step="0.01"
-                    min="0">
+        </label>
 
-            </label>
 
+        <select
+            id="platform"
+            onchange="updatePlatformFee()">
 
+            <option value="custom">
+                Custom
+            </option>
 
-            <label>
+            <option value="amazon">
+                Amazon - 15%
+            </option>
 
-                Shipping Cost
+            <option value="shopify">
+                Shopify - 2%
+            </option>
 
-                <input
-                    type="number"
-                    id="shippingCost"
-                    placeholder="5"
-                    step="0.01"
-                    min="0">
+            <option value="etsy">
+                Etsy - 6.5%
+            </option>
 
-            </label>
+            <option value="ebay">
+                eBay - 13.6%
+            </option>
 
+        </select>
 
 
-            <label>
+        <!-- Product Cost -->
 
-                Platform Fee (%)
+        <label for="productCost">
 
-                <input
-                    type="number"
-                    id="platformFee"
-                    value="5"
-                    placeholder="5"
-                    step="0.01"
-                    min="0"
-                    max="100">
+            Product Cost
 
-            </label>
+        </label>
 
 
+        <input
+            type="number"
+            id="productCost"
+            placeholder="Example: 10"
+            min="0"
+            step="0.01"
+        >
 
-            <label>
 
-                Advertising Cost
+        <!-- Selling Price -->
 
-                <input
-                    type="number"
-                    id="advertisingCost"
-                    placeholder="10"
-                    step="0.01"
-                    min="0">
+        <label for="sellingPrice">
 
-            </label>
+            Selling Price
 
+        </label>
 
 
-            <div class="button-row">
+        <input
+            type="number"
+            id="sellingPrice"
+            placeholder="Example: 30"
+            min="0"
+            step="0.01"
+        >
 
-                <button
-                    class="calculate-button"
-                    onclick="calculateProfit()">
 
-                    Calculate Profit
+        <!-- Shipping -->
 
-                </button>
+        <label for="shippingCost">
 
+            Shipping Cost
 
-                <button
-                    class="reset-button"
-                    onclick="resetCalculator()">
+        </label>
 
-                    Reset
 
-                </button>
+        <input
+            type="number"
+            id="shippingCost"
+            placeholder="Example: 5"
+            min="0"
+            step="0.01"
+        >
 
-            </div>
 
-        </section>
+        <!-- Platform Fee -->
 
+        <label for="platformFee">
 
+            Platform Fee (%)
 
-        <!-- Profit Status -->
+        </label>
 
-        <section
+
+        <input
+            type="number"
+            id="platformFee"
+            value="5"
+            min="0"
+            max="99"
+            step="0.1"
+        >
+
+
+        <!-- Advertising -->
+
+        <label for="advertisingCost">
+
+            Advertising Cost
+
+        </label>
+
+
+        <input
+            type="number"
+            id="advertisingCost"
+            placeholder="Example: 3"
+            min="0"
+            step="0.01"
+        >
+
+
+        <!-- Buttons -->
+
+        <div class="button-row">
+
+            <button
+                class="calculate-button"
+                onclick="calculateProfit()">
+
+                Calculate Profit
+
+            </button>
+
+
+            <button
+                class="reset-button"
+                onclick="resetCalculator()">
+
+                Reset
+
+            </button>
+
+        </div>
+
+
+        <!-- Status -->
+
+        <div
             id="profitStatus"
             class="profit-status neutral">
 
             Enter your numbers and calculate your profit.
 
-        </section>
-
+        </div>
 
 
         <!-- Results -->
 
-        <section class="results">
+        <div class="results">
 
 
             <div class="result-card">
 
                 <span>
+
                     Total Costs
+
                 </span>
+
 
                 <strong id="totalCosts">
+
                     $0.00
+
                 </strong>
 
             </div>
 
 
-
             <div class="result-card">
 
                 <span>
+
                     Profit
+
                 </span>
+
 
                 <strong id="profit">
+
                     $0.00
+
                 </strong>
 
             </div>
 
 
-
             <div class="result-card">
 
                 <span>
+
                     Profit Margin
+
                 </span>
+
 
                 <strong id="margin">
+
                     0%
+
                 </strong>
 
             </div>
 
 
-
             <div class="result-card">
 
                 <span>
-                    Break-even Price
+
+                    Break-Even Price
+
                 </span>
+
 
                 <strong id="breakEven">
+
                     $0.00
+
                 </strong>
 
             </div>
-
 
 
             <div class="result-card">
 
                 <span>
+
                     ROAS
+
                 </span>
 
+
                 <strong id="roas">
+
                     0x
+
                 </strong>
 
             </div>
 
-        </section>
+
+        </div>
+
+    </section>
 
 
+    <!-- Information -->
 
-        <!-- Information -->
-
-        <section class="info">
-
-            <h2>
-                Free E-Commerce Profit Calculator
-            </h2>
-
-            <p>
-                Calculate your estimated profit after product costs,
-                shipping, platform fees, and advertising expenses.
-            </p>
+    <section class="info">
 
 
-            <h2>
-                More Free Calculators
-            </h2>
+        <h2>
 
-            <p>
+            Free E-Commerce Profit Calculator
 
-                Want to see how your profit scales with more orders?
-
-                <a href="sales-profit-calculator.html">
-                    Try our Profit Per 100 Sales Calculator.
-                </a>
-
-            </p>
-
-        </section>
+        </h2>
 
 
+        <p>
 
-        <!-- Footer -->
+            Use this free calculator to estimate your e-commerce profit after product costs, shipping, platform fees and advertising expenses.
 
-        <footer>
-
-            <p>
-                Free E-Commerce Profit Calculator
-            </p>
-
-        </footer>
+        </p>
 
 
-    </main>
+        <h2>
+
+            More Free Calculators
+
+        </h2>
 
 
-    <script src="script.js"></script>
+        <p>
+
+            Calculate your expected profit from 100 sales using our
+
+            <a href="sales-profit-calculator.html">
+
+                Profit Per 100 Sales Calculator
+
+            </a>.
+
+        </p>
+
+
+        <p>
+
+            Find the minimum selling price needed to cover your costs using our
+
+            <a href="break-even-calculator.html">
+
+                E-Commerce Break-Even Calculator
+
+            </a>.
+
+        </p>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+
+            Free E-Commerce Calculators
+
+        </p>
+
+
+        <p>
+
+            © 2026
+
+        </p>
+
+    </footer>
+
+
+</div>
+
+
+<script src="script.js"></script>
+
 
 </body>
 
